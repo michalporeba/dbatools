@@ -198,7 +198,7 @@ function Get-DbaBackupInformation {
             $groupResults = @()
             if ($NoXpDirTree -ne $true) {
                 ForEach ($f in $path) {
-                    if ($f -match '\.\w{3}\Z') {
+                    if ($f -match '\.\w{3,4}\Z') {
                         if ("Fullname" -notin $f.PSobject.Properties.name) {
                             $f = $f | Select-Object *, @{ Name = "FullName"; Expression = { $f } }
                         }
